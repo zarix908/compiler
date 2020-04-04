@@ -1,4 +1,12 @@
-package data
+package ast
+
+data class Token(
+    val type: TokenType,
+    val value: String,
+    val startSourcePosition: Int
+) {
+    val endSourcePosition = startSourcePosition + value.length
+}
 
 enum class TokenType(val regexp: String) {
     RESERVED(
@@ -9,12 +17,4 @@ enum class TokenType(val regexp: String) {
     MATHOPERATORS("""\+|\*|-|\/"""),
     NUMBERS("[1-9][0-9]*|0"),
     ASSIGN("=")
-}
-
-data class Token(
-    val type: TokenType,
-    val value: String,
-    val startSourcePosition: Int
-) {
-    val endSourcePosition = startSourcePosition + value.length
 }

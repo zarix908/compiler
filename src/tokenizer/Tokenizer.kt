@@ -50,3 +50,5 @@ class Tokenizer<Token, TokenType>(
         return null
     }
 }
+
+class UnexpectedTokenError(val sourcePosition: Int, val value: String?)

@@ -1,5 +1,5 @@
-import data.Token
-import data.TokenType
+import ast.Token
+import ast.TokenType
 import tokenizer.Tokenizer
 import tokenizer.UnexpectedTokenError
 
