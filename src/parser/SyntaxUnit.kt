@@ -1,4 +1,4 @@
-package syntax
+package parser
 
 class SyntaxUnit(
     val name: String,
@@ -16,6 +16,18 @@ class SyntaxUnit(
 
     infix fun or(defs: SyntaxUnitDefinitions) =
         SyntaxUnitDefinitions(this) or defs
+
+    override fun equals(other: Any?): Boolean {
+        if (other !is SyntaxUnit) {
+            return false
+        }
+
+        return name == other.name
+    }
+
+    override fun hashCode(): Int {
+        return name.hashCode()
+    }
 }
 
 class SyntaxUnitDefinitions(leftUnit: SyntaxUnit): Iterable<MutableList<SyntaxUnit>> {
