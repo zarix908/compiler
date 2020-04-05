@@ -25,7 +25,7 @@ class LRItem(val definition: MutableList<SyntaxUnit>, val name: String) {
             closure.add(currentItem)
             queue.remove()
 
-            val leftUnit: SyntaxUnit? = currentItem.definition[0]
+            val leftUnit: SyntaxUnit? = currentItem.definition.getOrNull(0)
             if (leftUnit?.definitions == null) {
                 continue
             }
@@ -41,3 +41,7 @@ class LRItem(val definition: MutableList<SyntaxUnit>, val name: String) {
 
     fun leftUnit() = definition.first()
 }
+
+fun Set<LRItem>.closure() = this.toList()
+    .flatMap { i -> i.closure() }
+    .toSet()

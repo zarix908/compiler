@@ -44,7 +44,7 @@ fun buildParser(unit: SyntaxUnit): TransitionsTable {
         val transitions = mutableMapOf<SyntaxUnit, Transition>()
         for ((unit, set) in newSets) {
             transitions[unit] = Transition(actions[unit]!!, setsCount, reduceTo[unit])
-            queue.add(Pair(setsCount++, set))
+            queue.add(Pair(setsCount++, set.closure()))
         }
 
         transitionsTable[currentState] = transitions

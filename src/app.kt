@@ -6,11 +6,11 @@ import tokenizer.Tokenizer
 import tokenizer.UnexpectedTokenError
 
 fun main() {
-    val t = buildParser(mathExpr)
-    println("  | math_prime | math_operator | prime | number | id | rb | lb ")
+    val t = buildParser(expr)
+    println("  | math_expr | math_prime | math_operator | prime | number | id | lb | rb | semicolon | ")
     for ((i, transitions) in t) {
         print("$i | ")
-        for (u in listOf(mathPrime, mathOper, prime, number, id, rb, lb)) {
+        for (u in listOf(mathExpr, mathPrime, mathOper, prime, number, id, lb, rb, semicolon)) {
             val entry = transitions[u]
             print("${entry ?: "-"} | ")
         }
